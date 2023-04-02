@@ -1,24 +1,29 @@
-// const path = require('path');
+const contacts = require('./contacts.js');
 
-// const http = require('http');
-// const fs = require('fs').promises;
-
-// const PORT = 8081;
-
-// const requestHandler = async (request, response) => {
-//     const contactsPath = await fs.readFile('./db/contacts.json', 'utf8');
+async function invokeAction({ action, id, name, email, phone }) {
+    switch (action) {
+        case 'read':
+            const contacts = await contacts.listContacts();
+            console.log(contacts);
+            break;
+        case 'get':
+            const contact = await contacts.getContactById(id);
+            console.log(contact);
+            break;
+        case 'add':
+            const newContact = await contacts.addContact({name, email, phone});
+            console.log(newContact);
+            break;
+         case 'remove':
+            const removeContact = await contacts.removeContact(id);
+            console.log(removeContact);
+            break;
         
-//     response.writeHead(200, {'Content-Type': 'text / json'});
-//         response.end(contactsPath);
-// }
+        default:
+            console.log('Unknown action');
+    }
+ }
 
-// const server = http.createServer(requestHandler);
 
-// server.listen(PORT, (err) => {
-//     if (err) {
-//         console.log('Error at aserver launch:', err);
-//     }
-//     console.log(`Server works at port ${PORT}!`);
-// });
-
+invokeAction({ action: 'listContacts' });
 

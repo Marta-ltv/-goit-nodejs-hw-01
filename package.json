@@ -1,8 +1,10 @@
 {
   "dependencies": {
     "express": "^4.18.2",
-    "nodemon": "^2.0.21",
-    "react-ecmascript": "^1.4.4"
+    "nanoid": "^3.3.6",
+    "nodemon": "^2.0.22",
+    "react-ecmascript": "^1.4.4",
+    "uuid": "^9.0.0"
   },
   "name": "goit-nodejs-hw-01",
   "description": "",
@@ -11,7 +13,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start:watch": "node --watch index.js"
   },
   "repository": {
     "type": "git",
