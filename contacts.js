@@ -1,8 +1,8 @@
-const fs = require('fs/promises');
-const path = require('path');
+const fs = require("fs/promises");
+const path = require("path");
 const { nanoid } = require('nanoid');
 
-const contactsPath = path.resolve(__dirname, "./db/contacts.json");
+const contactsPath = path.join(__dirname, "db", "contacts.json");
 
 
 async function listContacts() {
@@ -17,7 +17,7 @@ function updateContacts(contacts) {
 
 async function getContactById(contactId) {
     const contacts = await listContacts();
-    const contact = contacts.find((contact) => contact.id === id);
+    const contact = contacts.find(({id}) => contactId === id);
     return contact;
 }
 
